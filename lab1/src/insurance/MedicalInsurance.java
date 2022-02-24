@@ -1,7 +1,6 @@
-package insurance;
+package Insurance;
 
-public class MedicalInsurance extends Insurance{
-
+public class MedicalInsurance extends Insurance {
 	private int age;
 	private String name;
 	private String surname;
@@ -10,37 +9,24 @@ public class MedicalInsurance extends Insurance{
 		super(period);
 		this.setAge(age);
 		this.setName(name);
-		this.setSurname(surname);		
+		this.setSurname(surname);
+		setRisk();
+		setPrice();
 	}
+	
+	@Override
+	public void setRisk() {
+		this.risk=0.09*age;
+	}
+
+	@Override
+	public void setPrice() {
+		this.price=1500*period*risk;
+	}
+
+	@Override
 	public void getInfo() {
-		System.out.println("Name: "+name+"\nSurname: "+surname+"\nAge: "+age+"\n");
-	}
-	@Override
-	public double countRisk() {
-		double risk=65*age;
-		return risk;
-	}
-
-	@Override
-	public double countPrice() {
-		double price=age*period*0.5;
-		return price;
-	}
-
-	public String getSurname() {
-		return surname;
-	}
-
-	public void setSurname(String surname) {
-		this.surname = surname;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
+		System.out.println("Name: "+name+"\nSurname: "+surname+"\nAge: "+age+"\nRisk: "+risk+"\nPrice: "+price+"\n");
 	}
 
 	public int getAge() {
@@ -51,6 +37,20 @@ public class MedicalInsurance extends Insurance{
 		this.age = age;
 	}
 
-	
-	
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getSurname() {
+		return surname;
+	}
+
+	public void setSurname(String surname) {
+		this.surname = surname;
+	}
+
 }
