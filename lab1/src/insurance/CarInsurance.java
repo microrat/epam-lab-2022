@@ -1,33 +1,35 @@
-package Insurance;
+package insurance;
 
-public class CarInsurance extends Insurance{
+public class CarInsurance extends Insurance {
 	private int yearOfRelease;
 	private String carType;
 	private String brand;
-	
-	public CarInsurance(int period, int yearOfRelease,String carType, String brand){
-		super(period);
-		this.yearOfRelease=yearOfRelease;
-		this.carType=carType;
-		this.brand=brand;
+
+	public CarInsurance(Type type, int period, int yearOfRelease, String carType, String brand) {
+		super(type, period);
+		this.yearOfRelease = yearOfRelease;
+		this.carType = carType;
+		this.brand = brand;
 		setRisk();
 		setPrice();
 	}
 
 	@Override
 	public void setRisk() {
-		this.risk=0.005*yearOfRelease;
-		
+		this.risk = 0.005 * yearOfRelease;
+
 	}
+
 	@Override
 	public void setPrice() {
-		this.price=500*risk*period;
-		
+		this.price = 500 * risk * period;
+
 	}
 
 	@Override
 	public void getInfo() {
-		System.out.println("Year of Release: "+yearOfRelease+"\nCar Type: "+carType+"\nBrand: "+brand+"\nRisk: "+risk+"\nPrice: "+price+"\n");
+		System.out.println("Type: " + type + "\nYear of Release: " + yearOfRelease + "\nCar Type: " + carType
+				+ "\nBrand: " + brand + "\nRisk: " + risk + "\nPrice: " + price + "\n");
 	}
 
 	public int getYearOfRelease() {

@@ -1,22 +1,21 @@
-package Filters;
-import Insurance.Filter;
-import Insurance.Insurance;
+package filters;
 
+import insurance.Filter;
+import insurance.Insurance;
 
 public class RiskFilter implements Filter {
 
-    private double minRisk;
-    private double maxRisk;
+	private double minRisk;
+	private double maxRisk;
 
- 
-    public RiskFilter(double minRisk, double maxRisk) {
-        this.setMinRisk(minRisk);
-        this.setMaxRisk(maxRisk);
-    }
+	public RiskFilter(double minRisk, double maxRisk) {
+		this.setMinRisk(minRisk);
+		this.setMaxRisk(maxRisk);
+	}
 
 	@Override
 	public boolean check(Insurance insurance) {
-		return (insurance.getRisk()>=minRisk && insurance.getRisk()<=maxRisk);
+		return (insurance.getRisk() >= minRisk && insurance.getRisk() <= maxRisk);
 	}
 
 	public double getMinRisk() {
@@ -35,7 +34,4 @@ public class RiskFilter implements Filter {
 		this.maxRisk = maxRisk;
 	}
 
-	
-
-  
 }

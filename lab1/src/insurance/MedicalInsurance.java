@@ -1,32 +1,33 @@
-package Insurance;
+package insurance;
 
 public class MedicalInsurance extends Insurance {
 	private int age;
 	private String name;
 	private String surname;
-	
-	public MedicalInsurance(int period, int age, String name,String surname) {
-		super(period);
+
+	public MedicalInsurance(Type type, int period, int age, String name, String surname) {
+		super(type, period);
 		this.setAge(age);
 		this.setName(name);
 		this.setSurname(surname);
 		setRisk();
 		setPrice();
 	}
-	
+
 	@Override
 	public void setRisk() {
-		this.risk=0.09*age;
+		this.risk = 0.09 * age;
 	}
 
 	@Override
 	public void setPrice() {
-		this.price=1500*period*risk;
+		this.price = 1500 * period * risk;
 	}
 
 	@Override
 	public void getInfo() {
-		System.out.println("Name: "+name+"\nSurname: "+surname+"\nAge: "+age+"\nRisk: "+risk+"\nPrice: "+price+"\n");
+		System.out.println("Type: " + type + "\nName: " + name + "\nSurname: " + surname + "\nAge: " + age + "\nRisk: "
+				+ risk + "\nPrice: " + price + "\n");
 	}
 
 	public int getAge() {

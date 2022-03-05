@@ -1,22 +1,21 @@
-package Filters;
-import Insurance.Filter;
-import Insurance.Insurance;
+package filters;
 
+import insurance.Filter;
+import insurance.Insurance;
 
 public class PriceFilter implements Filter {
 
-    private double minPrice;
-    private double maxPrice;
+	private double minPrice;
+	private double maxPrice;
 
- 
-    public PriceFilter(double minPrice, double maxPrice) {
-        this.setMinPrice(minPrice);
-        this.setMaxPrice(maxPrice);
-    }
+	public PriceFilter(double minPrice, double maxPrice) {
+		this.setMinPrice(minPrice);
+		this.setMaxPrice(maxPrice);
+	}
 
 	@Override
 	public boolean check(Insurance insurance) {
-		return (insurance.getPrice()>=minPrice && insurance.getPrice()<=maxPrice);
+		return (insurance.getPrice() >= minPrice && insurance.getPrice() <= maxPrice);
 	}
 
 	public double getMinPrice() {
@@ -35,5 +34,4 @@ public class PriceFilter implements Filter {
 		this.maxPrice = maxPrice;
 	}
 
-  
 }

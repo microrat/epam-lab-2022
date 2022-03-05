@@ -1,8 +1,7 @@
-package Comparator;
+package comparator;
 
 import java.util.Comparator;
-
-import Insurance.Insurance;
+import insurance.Insurance;
 
 public class SortByPrice implements Comparator<Insurance> {
 
