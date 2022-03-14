@@ -6,32 +6,52 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import domain.Email;
+import domain.Phone;
+import domain.Sentence;
+import domain.Text;
+import domain.WrongFormatException;
+
 public class lab2 {
 
-	public static void main(String[] args) {
-		String fileContent = null;
+	public static void main(String[] args) throws Exception {
+		System.out.println("В каждом предложении текста исключить подстроку максимальной длины,\nначинающуюся и заканчивающуюся заданными символами.\n"
+				+ "Я взяля для примера подстроку начинающуюся на 'e' и заканчивающуюся 'o' ");
+		System.out.println("Sentences in text are: \n");
+	
+		Text text=new Text("src/resources/data.txt");
+		System.out.println("\n"+text.getSentences());
+		
+		System.out.println("\nYou can get single sentence with index and get all phone numbers\nemails and modify this single sentence: \n");
+		
+		Sentence one=text.getOneSentence(3);
+		System.out.println(one.getSentence());
+		System.out.println(one.getPhoneNumbers());
+		System.out.println(one.getEmails());
+		System.out.println(one.getNewSentence());
+		
+		System.out.println("\nYou can get all phone numbers, emails and modified sentences from all text: \n");
+		
+		System.out.println(text.getAllPhoneNumbers());
+		System.out.println(text.getAllEmails());
+		System.out.println(text.getAllModifiedSentences());
+		
+		System.out.println("\nSpecials classes for presentation emails and phones: \n");
+		Email email = new Email(one.getEmails().get(0));
+		Phone phone = new Phone(one.getPhoneNumbers().get(0));
+		System.out.println(email);
+		System.out.println(phone);
 		try {
-		    fileContent = Files.readString(Path.of("src/resources/data.txt"));
-		} catch (IOException ex) {
-			System.err.println(ex);
+		Phone failedPhone =new Phone("33-56-78");
+		}catch(WrongFormatException ex) {
+			System.err.print(ex);
 		}
-		System.out.println(fileContent);
+		try {
+			Email failedEmail =new Email("qwe@qwe.b");
+			}catch(WrongFormatException ex) {
+				System.err.print(ex);
+			}
 		
-		//Pattern pattern = Pattern.compile("(\\w+)|([\s!?.,])");
 		
-		fileContent =fileContent.replaceAll("\s+|\t"," ");
-		fileContent =fileContent.replaceAll("\s+|\t"," ");
-		
-		System.out.println(fileContent);
-		Pattern pattern = Pattern.compile("([a-zA-Z0-9,\s]+)|(.)");
-        Matcher matcher = pattern.matcher(fileContent);
-        List<String> sentenses=new ArrayList();
-        while(matcher.find()) {
-            System.out.println(matcher.group());
-            sentenses.add(matcher.group());
-        }
-        System.out.println(sentenses);
-        
-        
 	}
 }
