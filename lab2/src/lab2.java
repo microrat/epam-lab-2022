@@ -15,8 +15,8 @@ import domain.WrongFormatException;
 public class lab2 {
 
 	public static void main(String[] args) throws Exception {
-		System.out.println("В каждом предложении текста исключить подстроку максимальной длины,\nначинающуюся и заканчивающуюся заданными символами.\n"
-				+ "Я взяля для примера подстроку начинающуюся на 'e' и заканчивающуюся 'o' ");
+		System.out.println("In each sentence of the text, exclude the maximum \nlength substring starting and ending with the specified characters. "
+				+ "\nFor example starting with 'e' and ending with 'o'.");
 		System.out.println("Sentences in text are: \n");
 	
 		Text text=new Text("src/resources/data.txt");
