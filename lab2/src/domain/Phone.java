@@ -15,15 +15,11 @@ public class Phone {
     }
 
     public Phone(String phone) throws WrongFormatException {
-	Pattern phonePattern = Pattern.compile("([+]\\d{3}[(]\\d{2}[)]\\d{3}[-]?\\d{2}[-]?\\d{2})");
-	Matcher matcher = phonePattern.matcher(phone);
-	if (matcher.find()) {
+	if(Pattern.matches( "[+]\\d{3}[(]\\d{2}[)]\\d{3}[-]?\\d{2}[-]?\\d{2}", phone)) {
 	    this.phone = phone;
-	} else {
-	    throw new WrongFormatException("Wrong phone format\n");
-
-	}
-
+	   	} else {
+	   	    throw new WrongFormatException("Wrong phone format\n");
+	   	} 
     }
 
     @Override

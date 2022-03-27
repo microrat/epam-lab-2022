@@ -14,16 +14,13 @@ public class Text {
     private List<Sentence> sentences = new ArrayList<Sentence>();
     private List<String> allPhoneNumbers = new ArrayList<String>();
     private List<String> allEmails = new ArrayList<String>();
-    private List<String> allModifiedSentences = new ArrayList<String>();
 
-    public Text(String filename) {
+    public Text(String filename) throws IOException {
 	this.filename = filename;
 	setText();
 	setSentences();
 	setAllPhoneNumbers();
 	setAllEmails();
-	setAllModifiedSentences();
-
     }
 
     public void setSentences() {
@@ -36,11 +33,7 @@ public class Text {
     }
 
     public List<String> getSentences() {
-	List<String> sentencesString = new ArrayList<String>();
-	for (Sentence sen : sentences) {
-	    sentencesString.add(sen.getSentence());
-	}
-	return sentencesString;
+	return sentences.stream().map(sen -> sen.getSentenceText()).toList();
     }
 
     public Sentence getOneSentence(int index) {
@@ -59,13 +52,9 @@ public class Text {
 	return text;
     }
 
-    public void setText() {
-	try {
-	    text = Files.readString(Path.of(filename));
-	    text = text.replaceAll("\\s{2,}", " ");
-	} catch (IOException ex) {
-	    System.err.println(ex);
-	}
+    public void setText() throws IOException {
+	text = Files.readString(Path.of(filename));
+	text = text.replaceAll("\\s{2,}", " ");
     }
 
     public List<String> getAllPhoneNumbers() {
@@ -88,14 +77,12 @@ public class Text {
 	}
     }
 
-    public List<String> getAllModifiedSentences() {
-	return allModifiedSentences;
-    }
-
-    public void setAllModifiedSentences() {
+    public List<String> getAllModifiedSentences(String begin, String end) {
+	List<String> allModifiedSentences = new ArrayList<String>();
 	for (Sentence sen : sentences) {
-	    allModifiedSentences.add(sen.getNewSentence());
+	    allModifiedSentences.add(sen.getNewSentence(begin,end));
 	}
+	return allModifiedSentences;
     }
 
 }

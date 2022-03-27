@@ -7,13 +7,10 @@ public class Email {
     private String email;
 
     public Email(String email) throws WrongFormatException {
-	Pattern emailPattern = Pattern.compile("([a-z]+[@][a-z]+[.][a-z]{2,})");
-	Matcher matcher = emailPattern.matcher(email);
-	if (matcher.find()) {
+	if (Pattern.matches("([a-z]+[@][a-z]+[.][a-z]{2,})", email)) {
 	    this.email = email;
 	} else {
-	    throw new WrongFormatException("Wrong email format\n");
-
+	    throw new WrongFormatException("Wrong phone email\n");
 	}
 
     }
