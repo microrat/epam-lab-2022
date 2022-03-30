@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns:tns="https://www.example.org/beer"
+	xmlns="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="https://www.example.org/beer"
+	elementFormDefault="qualified">
+
+	<element name="BeerList" type="tns:BeerList" />
+
+	<complexType name="BeerList">
+		<sequence>
+			<element name="Beer" maxOccurs="unbounded" type="tns:Beer" />
+		</sequence>
+		<attribute name="id" type="ID" use="required" />
+	</complexType>
+
+	<complexType name="Beer">
+		<sequence>
+			<element name="Title" type="string" />
+			<element name="BeerType" type="tns:BeerType" />
+			<element name="Al" type="boolean" />
+			<element name="Manufacturer" type="string" />
+			<element name="Chars" type="tns:Chars" />
+			<element name="Ingridients" type="tns:Ingridients" />
+		</sequence>
+	</complexType>
+
+	<simpleType name="BeerType">
+		<restriction base="string">
+			<enumeration value="Lager" />
+			<enumeration value="Light" />
+			<enumeration value="Dark" />
+			<enumeration value="Porter" />
+		</restriction>
+	</simpleType>
+
+	<complexType name="Chars">
+		<sequence>
+			<element name="Filtered" type="boolean" />
+			<element name="Calories" type="float"></element>
+			<element name="TypeOfFilling" type="tns:TypeOfFilling"></element>
+			<element name="NumberOfTurns" type="tns:NumberOfTurns"></element>
+			<element name="Tranparency" type="tns:Tranparency"></element>
+		</sequence>
+	</complexType>
+
+	<complexType name="TypeOfFilling">
+		<sequence>
+			<element name="Volume" type="tns:Volume" />
+			<element name="MaterialType" type="tns:MaterialType" />
+		</sequence>
+	</complexType>
+
+	<simpleType name="MaterialType">
+		<restriction base="string">
+			<enumeration value="Plastic" />
+			<enumeration value="Glass" />
+			<enumeration value="Steel" />
+			<enumeration value="Porter" />
+		</restriction>
+	</simpleType>
+
+	<simpleType name="Volume">
+		<restriction base="float">
+			<minExclusive value="0"></minExclusive>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="NumberOfTurns">
+		<restriction base="float">
+			<minInclusive value="0"></minInclusive>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="Tranparency">
+		<restriction base="string">
+			<pattern value="[1-9][0-9]?[%]"></pattern>
+		</restriction>
+	</simpleType>
+
+	<complexType name="Ingridients">
+		<sequence>
+			<element name="Ingridient" type="tns:Ingridient"
+				maxOccurs="unbounded" />
+		</sequence>
+	</complexType>
+
+	<complexType name="Ingridient">
+		<sequence>
+			<element name="Name" type="tns:IngrideintName" />
+			<element name="Amount" type="float" />
+		</sequence>
+	</complexType>
+
+	<simpleType name="IngrideintName">
+		<restriction base="string">
+			<enumeration value="Water" />
+			<enumeration value="Malt" />
+			<enumeration value="Hop" />
+			<enumeration value="Sugar" />
+		</restriction>
+	</simpleType>
+
+</schema>
