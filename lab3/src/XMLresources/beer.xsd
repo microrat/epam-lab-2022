@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<schema xmlns:tns="https://www.example.org/beer"
+<schema xmlns:tns="https://www.example.org/BeerList"
 	xmlns="http://www.w3.org/2001/XMLSchema"
-	targetNamespace="https://www.example.org/beer"
+	targetNamespace="https://www.example.org/BeerList"
 	elementFormDefault="qualified">
 
 	<element name="BeerList" type="tns:BeerList" />
@@ -10,7 +10,6 @@
 		<sequence>
 			<element name="Beer" maxOccurs="unbounded" type="tns:Beer" />
 		</sequence>
-		<attribute name="id" type="ID" use="required" />
 	</complexType>
 
 	<complexType name="Beer">
@@ -22,6 +21,7 @@
 			<element name="Chars" type="tns:Chars" />
 			<element name="Ingridients" type="tns:Ingridients" />
 		</sequence>
+		<attribute name="id" type="ID" use="required" />
 	</complexType>
 
 	<simpleType name="BeerType">
@@ -55,7 +55,6 @@
 			<enumeration value="Plastic" />
 			<enumeration value="Glass" />
 			<enumeration value="Steel" />
-			<enumeration value="Porter" />
 		</restriction>
 	</simpleType>
 
@@ -86,7 +85,7 @@
 
 	<complexType name="Ingridient">
 		<sequence>
-			<element name="Name" type="tns:IngrideintName" />
+			<element name="IngrideintName" type="tns:IngrideintName" />
 			<element name="Amount" type="float" />
 		</sequence>
 	</complexType>
